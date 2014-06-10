@@ -1,0 +1,14 @@
+## PRINT CONTENT MACRO
+#macro( printContent $title )##
+#set( $contentlet = $dotcontent.pull("+structureName:webPageContent +conhost:###-####-#### +webPageContent.title:${esc.q}${title}${esc.q}", 1, '') )##
+  #if( $contentlet.size() < 1 )##
+    #set( $contentlet = $dotcontent.pull("+structureName:webPageContent +conhost:###-####-#### +webPageContent.title:${esc.q}${title}${esc.q} +languageId:1", 1, '') )##
+  #end##
+  #if( $contentlet.size() > 0 )##
+    #set( $contentlet = $contentlet.get(0) )##
+    #editContentlet($contentlet.inode)##
+    $contentlet.body
+  #else##
+    <!-- M: no contentlet with a title of "${title}"... -->
+  #end##
+#end##
