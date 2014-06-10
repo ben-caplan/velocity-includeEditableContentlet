@@ -1,6 +1,6 @@
 ## PRINT CONTENT MACRO
 #macro( printContent $title )##
-#set( $contentlet = $dotcontent.pull("+structureName:webPageContent +conhost:###-####-#### +webPageContent.title:${esc.q}${title}${esc.q}", 1, '') )##
+  #set( $contentlet = $dotcontent.pull("+structureName:webPageContent +conhost:###-####-#### +webPageContent.title:${esc.q}${title}${esc.q}", 1, '') )##
   #if( $contentlet.size() < 1 )##
     #set( $contentlet = $dotcontent.pull("+structureName:webPageContent +conhost:###-####-#### +webPageContent.title:${esc.q}${title}${esc.q} +languageId:1", 1, '') )##
   #end##
